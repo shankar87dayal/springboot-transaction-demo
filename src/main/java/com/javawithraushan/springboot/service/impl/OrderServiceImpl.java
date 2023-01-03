@@ -9,6 +9,7 @@ import com.javawithraushan.springboot.repository.OrderRepository;
 import com.javawithraushan.springboot.repository.PaymentRepository;
 import com.javawithraushan.springboot.service.OrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     private PaymentRepository paymentRepository;
     @Override
+    @Transactional
     public OrderResponse placeOrder(OrderRequest orderRequest) {
         Order order =orderRequest.getOrder();
         order.setStatus("INPROGRESS");
